@@ -10,3 +10,4 @@ vendor/
 Gemfile.lock
 .vagrant/
 playbooks/iworx-cp-install.sh
+.kitchen/

@@ -1,0 +1,35 @@
+---
+driver: docker
+
+provisioner:
+  name: ansible_playbook
+  hosts: test-kitchen
+  require_chef_for_busser: false
+  requirements_path: requirements.yml
+  additional_copy_path:
+    - playbooks
+
+verifier:
+  name: serverspec
+
+platforms:
+- name: centos
+  driver_config:
+    use_sudo: false
+    image: sedunne/docker-centos7-ansible:latest
+    platform: centos
+    forward:
+      - '2443:2443'
+    volume:
+      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+    security_opt:
+      - 'seccomp=unconfined'
+    run_options:
+      tmpfs:
+        - /run
+        - /tmp
+suites:
+  - name: default
+    verifier:
+      patterns:
+      - test/integration/*_spec.rb

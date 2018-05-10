@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative '../spec_helper'
 
 describe package('interworx'), :if => os[:family] == 'redhat' do
   it { should be_installed }

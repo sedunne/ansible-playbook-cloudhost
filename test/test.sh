@@ -49,4 +49,3 @@ if [ "$cleanup" = true ]; then
   printf "Removing Docker container...\n"
   docker rm -f $container_id
 fi
-

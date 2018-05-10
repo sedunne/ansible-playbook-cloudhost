@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: yes
+
+- name: import real playbook
+  import_playbook: playbooks/ci_setup.yml

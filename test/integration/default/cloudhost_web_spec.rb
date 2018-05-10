@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative '../spec_helper'
 
 describe package('httpd'), :if => os[:family] == 'redhat' do
   it { should be_installed.with_version('2.4') }
